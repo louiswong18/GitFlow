@@ -21,6 +21,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin' # 'adopt' or 'zulu' also work
+        java-version: '17'
+        
     - name: Run Unit Tests
       run: |
         # Commands to run unit tests
