@@ -40,7 +40,6 @@ jobs:
       run: |
         curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
         unzip sonar-scanner.zip -d $HOME
-        export PATH=$HOME/sonar-scanner-4.8.0.2856-linux/bin:$PATH
         echo "$HOME/sonar-scanner-4.8.0.2856-linux/bin" >> $GITHUB_PATH
 
     - name: Run SonarQube Scan
@@ -48,6 +47,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
+        PATH: $JAVA_HOME/bin:$PATH
       run: |
         $HOME/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner \
           -Dsonar.projectKey=louiswong18_gitflow \
