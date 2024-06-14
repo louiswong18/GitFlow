@@ -37,10 +37,11 @@ jobs:
         # Example: npm install && npm test
 
     - name: Install SonarScanner
+      shell: bash
       run: |
         curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
         unzip sonar-scanner.zip -d $HOME
-        echo "$HOME/sonar-scanner-4.8.0.2856-linux/bin" >> $GITHUB_PATH
+        echo "export PATH=\$HOME/sonar-scanner-4.8.0.2856-linux/bin:\$PATH" >> $GITHUB_ENV
 
     - name: Run SonarQube Scan
       shell: bash
@@ -48,7 +49,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
-        PATH: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64/bin:$PATH:$HOME/sonar-scanner-4.8.0.2856-linux/bin
+        PATH: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64/bin:$PATH
       run: |
         sonar-scanner \
           -Dsonar.projectKey=louiswong18_gitflow \
