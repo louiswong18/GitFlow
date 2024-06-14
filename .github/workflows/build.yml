@@ -20,4 +20,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dproject.settings=./sonar-project.properties
+            -Dsonar.projectKey=louiswong18_gitflow
+            -Dsonar.organization=louiswong18-org
