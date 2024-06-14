@@ -47,7 +47,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
-        PATH: $JAVA_HOME/bin:$PATH
+        PATH: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64/bin:$PATH
       run: |
         $HOME/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner \
           -Dsonar.projectKey=louiswong18_gitflow \
