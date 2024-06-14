@@ -24,9 +24,12 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin' # 'adopt' or 'zulu' also work
+        distribution: 'temurin'
         java-version: '17'
-        
+
+    - name: Verify Java Version
+      run: java -version
+
     - name: Run Unit Tests
       run: |
         # Commands to run unit tests
@@ -39,5 +42,6 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
-        projectKey: 'louiswong18_gitflow'
-        projectName: 'GitFlow'
+        args: >
+          -Dsonar.projectKey=louiswong18_gitflow
+          -Dsonar.projectName=GitFlow
